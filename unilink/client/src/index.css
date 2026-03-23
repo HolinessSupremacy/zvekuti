@@ -1,0 +1,192 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #6366f1;
+  --color-primary-light: #818cf8;
+  --color-primary-soft: #eef2ff;
+  --color-mint: #10b981;
+  --color-mint-soft: #d1fae5;
+  --color-peach: #f97316;
+  --color-peach-soft: #ffe4d6;
+  --color-bg: #f8f7ff;
+  --color-surface: #ffffff;
+  --color-text: #1e1b4b;
+  --color-muted: #6b7280;
+  --color-border: #e8e6f5;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: var(--color-bg);
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 0; height: 0; }
+
+/* Safe area support */
+.pb-safe { padding-bottom: env(safe-area-inset-bottom, 1rem); }
+
+/* Gradient backgrounds */
+.bg-gradient-primary {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+}
+
+.bg-gradient-soft {
+  background: linear-gradient(135deg, #eef2ff 0%, #f5f3ff 100%);
+}
+
+/* Story ring */
+.story-ring {
+  background: linear-gradient(135deg, #6366f1, #ec4899, #f97316);
+  padding: 2px;
+  border-radius: 9999px;
+}
+
+/* Compatibility badge */
+.compat-high { background: linear-gradient(135deg, #10b981, #34d399); }
+.compat-med  { background: linear-gradient(135deg, #6366f1, #818cf8); }
+.compat-low  { background: linear-gradient(135deg, #f97316, #fb923c); }
+
+/* Page transitions */
+.page-enter {
+  animation: pageEnter 0.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes pageEnter {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Card hover */
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card-hover:active {
+  transform: scale(0.98);
+}
+
+/* Pill tabs */
+.tab-pill {
+  transition: all 0.2s ease;
+}
+
+/* Match card gradient overlay */
+.match-overlay {
+  background: linear-gradient(to top, rgba(30, 27, 75, 0.85) 0%, rgba(30, 27, 75, 0.1) 60%, transparent 100%);
+}
+
+/* Progress bar animation */
+@keyframes fillBar {
+  from { width: 0%; }
+  to   { width: var(--target-width); }
+}
+
+.progress-fill {
+  animation: fillBar 1s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
+  width: 0%;
+}
+
+/* Pulse dot */
+.pulse-dot {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
+}
+
+/* Bottom nav active indicator */
+.nav-active-bar {
+  background: linear-gradient(90deg, #6366f1, #8b5cf6);
+}
+
+/* Message bubble */
+.bubble-sent {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white;
+  border-radius: 18px 18px 4px 18px;
+}
+.bubble-received {
+  background: white;
+  color: #1e1b4b;
+  border-radius: 18px 18px 18px 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+/* Floating action button */
+.fab {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.35);
+}
+
+/* Trait tag */
+.trait-tag {
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  border: 1px solid rgba(99, 102, 241, 0.15);
+}
+
+/* Interest chip */
+.interest-chip {
+  transition: all 0.15s ease;
+}
+.interest-chip.selected {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white;
+}
+
+/* Section heading accent */
+.section-accent {
+  position: relative;
+}
+.section-accent::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 28px;
+  height: 3px;
+  background: linear-gradient(90deg, #6366f1, #8b5cf6);
+  border-radius: 9999px;
+}
+
+/* Shimmer skeleton */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #e8e6f5 25%, #f0eeff 50%, #e8e6f5 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+}
+
+/* Landing dark theme */
+.landing-bg {
+  background: radial-gradient(ellipse at 20% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 20%, rgba(139, 92, 246, 0.12) 0%, transparent 50%),
+              #0f0e1a;
+}
+
+/* Noise texture overlay */
+.noise::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+}
