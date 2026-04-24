@@ -7,6 +7,7 @@ import Matches from './pages/Matches'
 import Groups from './pages/Groups'
 import Messages from './pages/Messages'
 import Profile from './pages/Profile'
+import NewPage from './pages/NewPage'
 
 export default function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -27,6 +28,7 @@ export default function App() {
         <Route path="/groups" element={<Groups />} />
         <Route path="/messages" element={<Messages />} />
         <Route path="/profile" element={<Profile onLogout={handleLogout} />} />
+        <Route path="/newpage" element={<NewPage />} />
         <Route path="*" element={<Navigate to="/home" replace />} />
       </Routes>
     </Layout>

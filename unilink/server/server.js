@@ -8,9 +8,12 @@ const app = express()
 const PORT = process.env.PORT || 3001
 
 // Middleware
-app.use(cors({ origin: ['http://localhost:5173', 'http://127.0.0.1:5173'] }))
+app.use(cors({ origin: true }))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+
+// Serve static files from the React app build directory
+app.use(express.static('../client/dist'))
 
 // Request logger
 app.use((req, _res, next) => {
@@ -64,6 +67,11 @@ app.get('/api', (_req, res) => {
       },
     },
   })
+})
+
+// Catch all handler: send back React's index.html file for client-side routing
+app.get('*', (_req, res) => {
+  res.sendFile('index.html', { root: '../client/dist' })
 })
 
 // 404 handler

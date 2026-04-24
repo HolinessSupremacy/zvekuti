@@ -1,6 +1,6 @@
 import { NavLink, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Home, Users, MessageCircle, Grid3X3, UserCircle } from 'lucide-react'
+import { Home, Users, MessageCircle, Grid3X3, UserCircle, Calendar } from 'lucide-react'
 
 const NAV_ITEMS = [
   { to: '/home',     icon: Home,          label: 'Home'     },
@@ -8,6 +8,8 @@ const NAV_ITEMS = [
   { to: '/groups',   icon: Grid3X3,       label: 'Groups'   },
   { to: '/messages', icon: MessageCircle, label: 'Messages' },
   { to: '/profile',  icon: UserCircle,    label: 'Profile'  },
+  { to: '/newpage',  icon: Calendar,      label: 'New Page' },
+  
 ]
 
 export default function Layout({ children, onLogout }) {
